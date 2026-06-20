@@ -4,12 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CourseService {
-
   private storageKey = 'prodigimind_courses';
 
-  private courses: any[] = JSON.parse(
-    localStorage.getItem(this.storageKey) || '[]'
-  );
+  courses: any[] = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
 
   getCourses() {
     return this.courses;
