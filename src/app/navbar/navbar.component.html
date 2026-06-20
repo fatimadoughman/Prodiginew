@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <div class="logo">ProdigiMind</div>
+
+  <div class="nav-links" [class.active]="menuOpen">
+    <!-- <a
+  routerLink="/homepage"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }"
+  (click)="scrollTo('home')">
+  Home
+</a> -->
+<!-- <a (click)="scrollTo('courses')" routerLinkActive="active-link" >Courses</a> -->
+<a
+  routerLink="/homepage"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+  Home
+</a>
+
+<a
+  routerLink="/main-courses"
+  routerLinkActive="active-link" (click)="closeMenu()">
+  Courses
+</a>
+<a
+  routerLink="/servicess"
+  routerLinkActive="active-link" (click)="closeMenu()">
+ Services
+</a>
+<a
+  routerLink="/projects"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+  Projects
+</a>
+<a
+  routerLink="/about"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+  About
+</a>
+
+  </div>
+
+  <a class="contact-btn"
+  routerLink="/contact-us"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()" >
+  Contact Us
+</a>
+
+
+  <button class="menu-icon" type="button" (click)="toggleMenu()">
+    {{ menuOpen ? '✕' : '☰' }}
+  </button>
+</nav>

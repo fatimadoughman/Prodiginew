@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="login-card">
+  <div class="login-header">
+  <div class="admin-badge">ADMIN PORTAL</div>
+  <h1>Welcome Back</h1>
+  <p>Sign in to manage ProdigiMind</p>
+</div>
+ <form (ngSubmit)="login()">
+  <div class="input-group">
+    <label>Email</label>
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="admin@.com">
+  </div>
+<div class="input-group">
+  <label>Password</label>
+
+  <div class="password-wrapper">
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Enter your password">
+
+    <span
+      class="toggle-password"
+      (click)="showPassword = !showPassword">
+      {{ showPassword ? 'Hide' : 'Show' }}
+    </span>
+  </div>
+</div>
+
+  <p class="error-message" [hidden]="!errorMessage">
+    {{ errorMessage }}
+  </p>
+
+  <button type="submit">Login</button>
+</form>
+
+  </div>
+</div>
+
+

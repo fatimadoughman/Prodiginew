@@ -1,0 +1,177 @@
+<section class="project-page">
+
+  <div class="project-header">
+    <span>PROJECT SUPPORT</span>
+    <h1>Need help with your project?</h1>
+    <p>
+      From planning and research to implementation and presentation,
+      our experts help you deliver outstanding results.
+    </p>
+  </div>
+
+  <div class="service-cards">
+    <div class="service-card">
+      <div>🎓</div>
+      <h4>Academic Projects</h4>
+    </div>
+
+    <div class="service-card">
+      <div>💻</div>
+      <h4>Programming Projects</h4>
+    </div>
+
+    <div class="service-card">
+      <div>🏗️</div>
+      <h4>Engineering Projects</h4>
+    </div>
+  </div>
+
+  <div class="project-card">
+
+    <form #projectForm="ngForm" (ngSubmit)="submitProject(projectForm)" novalidate>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            [(ngModel)]="project.name"
+            #name="ngModel"
+            required
+            minlength="3"
+          >
+          @if (showError(name)) {
+            <small>Full name must be at least 3 characters.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            [(ngModel)]="project.email"
+            #email="ngModel"
+            required
+            email
+          >
+          @if (showError(email)) {
+            <small>Please enter a valid email address.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+            [(ngModel)]="project.phone"
+            #phone="ngModel"
+            required
+            minlength="8"
+            maxlength="15"
+            pattern="^[0-9]+$"
+            (input)="onlyNumbers($event)"
+          >
+          @if (showError(phone)) {
+            <small>Phone number must contain 8 to 15 digits only.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="university"
+            placeholder="University"
+            [(ngModel)]="project.university"
+            #university="ngModel"
+            required
+            minlength="2"
+          >
+          @if (showError(university)) {
+            <small>University name is required.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="major"
+            placeholder="Major"
+            [(ngModel)]="project.major"
+            #major="ngModel"
+            required
+            minlength="2"
+          >
+          @if (showError(major)) {
+            <small>Major is required.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            name="year"
+            placeholder="Academic Year"
+            [(ngModel)]="project.year"
+            #year="ngModel"
+            required
+          >
+          @if (showError(year)) {
+            <small>Academic year is required.</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <input
+            type="date"
+            name="deadline"
+            [(ngModel)]="project.deadline"
+            #deadline="ngModel"
+            required
+          >
+          @if (showError(deadline)) {
+            <small>Please choose a deadline.</small>
+          }
+        </div>
+
+      </div>
+
+      <div class="form-group full">
+        <textarea
+          name="description"
+          placeholder="Describe your project..."
+          [(ngModel)]="project.description"
+          #description="ngModel"
+          required
+          minlength="20">
+        </textarea>
+
+        @if (showError(description)) {
+          <small>Description must be at least 20 characters.</small>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <div class="error-box">
+          {{ errorMessage }}
+        </div>
+      }
+
+      @if (successMessage) {
+        <div class="success-box">
+          {{ successMessage }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Submitting...' : 'Submit Project →' }}
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
